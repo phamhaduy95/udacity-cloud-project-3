@@ -1,0 +1,34 @@
+version: '3.5'
+services:
+    db:
+        image: 'postgres'
+        restart: 'always'
+        env_file: /.env
+        volumes:
+            - data:/data/db
+    backend-user:
+        build:
+            context: ./backend/user-service
+        env_file: /.env
+
+    backend-feed:
+        build:
+            context: ./backend/feed-service
+        env_file: /.env
+
+    proxy:
+        build:
+            context: ./backend/nginx-proxy
+        ports:
+            - 8080:8080
+        depends_on:
+            - backend-user
+            - backend-feed
+
+    frontend:
+        build:
+            context: ./frontend
+        ports:
+            - 8100:80
+volumes:
+    data:
