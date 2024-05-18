@@ -3,16 +3,16 @@ services:
     backend-user:
         build:
             context: ./backend/user-service
-        image: duyph995/udagram-api-user:v1
+        image: duyph995/udagram-api-user:latest
     backend-feed:
         build:
             context: ./backend/feed-service
-        image: duyph995/udagram-api-feed:v1
+        image: duyph995/udagram-api-feed:latest
     proxy:
         build:
             context: ./backend/nginx-proxy
-        image: duyph995/reverseproxy:v1
+        image: duyph995/reverseproxy:latest
     frontend:
         build:
             context: ./frontend
-        image: duyph995/udagram-frontend:v1
+        image: duyph995/udagram-frontend:latest
