@@ -16,6 +16,6 @@ before_script:
 script:
   - docker --version # print the version for logging
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker-compose build --push
+  - docker compose build --push
 after_success:
   - echo "success"
