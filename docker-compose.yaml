@@ -10,17 +10,20 @@ services:
         build:
             context: ./backend/user-service
         env_file: /.env
+        image: udagram-api-user
 
     backend-feed:
         build:
             context: ./backend/feed-service
         env_file: /.env
+        image: udagram-api-feed
 
     proxy:
         build:
             context: ./backend/nginx-proxy
         ports:
             - 8080:8080
+        image: reverseproxy
         depends_on:
             - backend-user
             - backend-feed
@@ -28,6 +31,7 @@ services:
     frontend:
         build:
             context: ./frontend
+        image: udagram-frontend
         ports:
             - 8100:80
 volumes:
