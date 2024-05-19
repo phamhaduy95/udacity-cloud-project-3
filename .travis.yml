@@ -28,4 +28,7 @@ script:
   - docker --version # print the version for logging
   - docker-compose build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker-compose build --push
+  - docker push duyph995/udagram-api-feed:latest
+  - docker push duyph995/udagram-api-user:latest
+  - docker push duyph995/udagram-frontend:latest
+  - docker push duyph995/reverseproxy:latest
