@@ -45,4 +45,7 @@ cmd/
 
 set_env.sh
 
+*.secret.yaml
+
 .env
+

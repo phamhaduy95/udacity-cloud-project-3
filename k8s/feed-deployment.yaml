@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feed-api-deployment
+spec:
+  replicas: 2
+  selector:
+  matchLabels:
+    app: feed-api
+  template:
+    metadata:
+    labels:
+      app: feed-api
+    spec:
+      containers:
+        - name: api-feed
+          image: duyph995/udagram-api-feed:latest
+          envFrom:
+            - configMapRef:
+                name: config-map
+            - secretKeyRef:
+                name: secret-aws
+            - secretKeyRef:
+                name: secret-postgres
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 8080
