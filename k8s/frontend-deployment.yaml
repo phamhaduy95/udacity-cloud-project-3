@@ -3,18 +3,17 @@ kind: Deployment
 metadata:
   name: frontend-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
-  matchLabels:
-    app: frontend-app
+    matchLabels:
+      app: frontend-app
   template:
     metadata:
-    labels:
-      app: frontend-app
+      labels:
+        app: frontend-app
     spec:
       containers:
         - name: frontend-app
           image: duyph995/udagram-frontend:latest
           ports:
-            containerPort: 80
-          restartPolicy: always
+            - containerPort: 80

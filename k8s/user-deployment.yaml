@@ -5,12 +5,12 @@ metadata:
 spec:
   replicas: 1
   selector:
-  matchLabels:
-    app: user-api
+    matchLabels:
+      app: user-api
   template:
     metadata:
-    labels:
-      app: user-api
+      labels:
+        app: user-api
     spec:
       containers:
         - name: user-api
@@ -18,5 +18,5 @@ spec:
           envFrom:
             - configMapRef:
                 name: config-map
-            - secretKeyRef:
+            - secretRef:
                 name: secret-postgres

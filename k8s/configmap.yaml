@@ -6,5 +6,6 @@ data:
   AWS_REGION: us-east-1
   AWS_PROFILE: default
   AWS_BUCKET: bucket-asia6mu4xcuglu2x5zfs
-  POSTGRES_HOST:
+  POSTGRES_HOST: database-1.cuklnzwykljt.us-east-1.rds.amazonaws.com
   POSTGRES_DB: postgres
+  URL: https://localhost:8100

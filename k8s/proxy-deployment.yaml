@@ -5,16 +5,15 @@ metadata:
 spec:
   replicas: 1
   selector:
-  matchLabels:
-    app: reverseproxy
+    matchLabels:
+      app: reverseproxy
   template:
     metadata:
-    labels:
-      app: reverseproxy
+      labels:
+        app: reverseproxy
     spec:
       containers:
         - name: reverseproxy
           image: duyph995/reverseproxy:latest
           ports:
-            containerPort: 8080
-          restartPolicy: always
+            - containerPort: 8080
