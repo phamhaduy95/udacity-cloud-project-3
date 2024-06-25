@@ -6,11 +6,11 @@ services:
     #     env_file: /.env
     #     volumes:
     #         - data:/data/db
-    user-api-svc:
+    backend-user:
         build:
             context: ./backend/user-service
         env_file: /.env
-    feed-api-svc:
+    backend-feed:
         build:
             context: ./backend/feed-service
         env_file: /.env

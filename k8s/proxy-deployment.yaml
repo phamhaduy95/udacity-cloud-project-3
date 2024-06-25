@@ -15,5 +15,7 @@ spec:
       containers:
         - name: reverseproxy
           image: duyph995/reverseproxy:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
+      restartPolicy: Always

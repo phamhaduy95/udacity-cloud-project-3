@@ -15,5 +15,7 @@ spec:
       containers:
         - name: frontend-app
           image: duyph995/udagram-frontend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
+      restartPolicy: Always

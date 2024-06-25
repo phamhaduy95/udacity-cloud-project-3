@@ -5,6 +5,7 @@ import { config } from './config/config';
 const credentials = new AWS.Credentials({
     accessKeyId: config.aws_access_id,
     secretAccessKey: config.aws_access_secret,
+    sessionToken: config.aws_token,
 });
 
 AWS.config.credentials = credentials;
@@ -17,22 +18,30 @@ export const s3 = new AWS.S3({
 
 // Generates an AWS signed URL for retrieving objects
 export function getGetSignedUrl(key: string): string {
-    const signedUrlExpireSeconds = 60 * 5;
+    try {
+        const signedUrlExpireSeconds = 60 * 5;
 
-    return s3.getSignedUrl('getObject', {
-        Bucket: config.aws_media_bucket,
-        Key: key,
-        Expires: signedUrlExpireSeconds,
-    });
+        return s3.getSignedUrl('getObject', {
+            Bucket: config.aws_media_bucket,
+            Key: key,
+            Expires: signedUrlExpireSeconds,
+        });
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 // Generates an AWS signed URL for uploading objects
 export function getPutSignedUrl(key: string): string {
-    const signedUrlExpireSeconds = 60 * 5;
+    try {
+        const signedUrlExpireSeconds = 60 * 5;
 
-    return s3.getSignedUrl('putObject', {
-        Bucket: config.aws_media_bucket,
-        Key: key,
-        Expires: signedUrlExpireSeconds,
-    });
+        return s3.getSignedUrl('putObject', {
+            Bucket: config.aws_media_bucket,
+            Key: key,
+            Expires: signedUrlExpireSeconds,
+        });
+    } catch (e) {
+        console.log(e);
+    }
 }

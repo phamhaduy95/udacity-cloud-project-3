@@ -15,6 +15,7 @@ spec:
       containers:
         - name: api-feed
           image: duyph995/udagram-api-feed:latest
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: config-map
